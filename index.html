@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>chat pirulii</title>
+	<!-- <link rel="stylesheet" href=""> -->
+
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+
+			var src = new EventSource("api/chat"),
+			out = document.getElementById("out"),
+			form = $("#chat_form");
+			src.onmessage = function(e) {
+				console.log("ha llegado un paqute! " + e);
+				var newElement = document.createElement("div");
+				newElement.innerHTML = "message: " + e.data;
+				out.appendChild(newElement);
+			};
+
+
+			form.on("submit", function(e){
+				e.preventDefault();
+				$.post(	"api/chat/", form.serialize())
+				.done(function( msg ) {
+					console.log( "Data Saved: " + msg );
+				});
+			});
+		});
+	</script>
+</head>
+<body>
+<!--
+    ___        ___         /\  \         /\  \                       /\  \    
+   /\__\      /\__\       |::\  \       /::\  \         ___         /::\  \   
+  /:/__/     /:/__/       |:|:\  \     /:/\:\  \       /\__\       /:/\:\  \  
+ /::\  \    /::\  \     __|:|\:\  \   /:/ /::\  \     /:/  /      /:/  \:\  \ 
+ \/\:\  \   \/\:\  \   /::::|_\:\__\ /:/_/:/\:\__\   /:/__/      /:/__/ \:\__\
+  ~~\:\  \   ~~\:\  \  \:\~~\  \/__/ \:\/:/  \/__/  /::\  \      \:\  \ /:/  /
+     \:\__\     \:\__\  \:\  \        \::/__/      /:/\:\  \      \:\  /:/  / 
+     /:/  /     /:/  /   \:\  \        \:\  \      \/__\:\  \      \:\/:/  /  
+    /:/  /     /:/  /     \:\__\        \:\__\          \:\__\      \::/  /   
+    \/__/      \/__/       \/__/         \/__/           \/__/       \/__/    
+ 
+-->
+
+<div id="chat">
+	<div id="out"></div>
+	<div id="input">
+		<form post="api/chat/" id="chat_form">
+			<input type="text" name="aut"></input>				
+			<input type="submit"/>
+		</form>
+		<textarea name="txt" form="chat_form"></textarea>
+	</div>
+</div>
+
+</body>
+</html>
