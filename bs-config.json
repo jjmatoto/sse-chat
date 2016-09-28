@@ -1,0 +1,4 @@
+{
+    "files" : "./public/**/*.{js, html, css}",
+    "server" : { "baseDir" : "./public" }
+}
