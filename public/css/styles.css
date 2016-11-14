@@ -1,0 +1,14 @@
+#out #msg {
+	border: solid 1px black;
+	margin: .2em;
+}
+#out #msg>strong {
+	color: green;
+	margin-right: .1em
+}
+#out #msg>span.date {
+	color: gray;
+	font-size: .5em;
+	text-aling: right;
+	float: right;
+}

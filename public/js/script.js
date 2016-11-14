@@ -1,35 +1,33 @@
+var src, out, form;
 $(document).ready(function(){
-
-	var src = new EventSource("api/chat/stream"),
-	out = $("#out"),
+	
+	src = new EventSource("api/chat/stream");
+	out = $("#out");
 	form = $("#chat_form");
-	src.onmessage = function(e) {
-		console.log("ha llegado un paqute! " + e);
 
-		var data = JSON.parse(e.data);
-		data.forEach(function(item){
-			var spanAut = "<span>"+item.autor+"</span>",
-			spanTxt = "<span>"+item.text+"</span>",
-			spanDate = "<span>"+item.date+"</span>",
-			divMsg = "<div>"+spanAut+spanTxt+spanDate+"</div>";
+	function renderMsg(data){
+		var spanAut = "<strong>"+data.autor+":</strong>",
+			spanTxt = "<span>"+data.text+"</span>",
+			spanDate = "<span class=\"date\">"+new Date(data.date).toLocaleTimeString()+"</span>",
+			divMsg = "<div id=\"msg\">"+spanAut+spanTxt+spanDate+"</div>";
 			out.append(divMsg);
-		});
+	}
+
+	src.onmessage = function(e) {
+		var data = JSON.parse(e.data);
+		renderMsg(data);
 	};
 
-	$.ajax('api/chat').done(function(data){
+	$.ajax("api/chat").done(function(data){
 		var data = JSON.parse(data);
 		data.forEach(function(item){
-			var spanAut = "<span>"+item.autor+"</span>",
-			spanTxt = "<span>"+item.text+"</span>",
-			spanDate = "<span>"+item.date+"</span>",
-			divMsg = "<div>"+spanAut+spanTxt+spanDate+"</div>";
-			out.append(divMsg);
+			renderMsg(item);
 		});
 	})
 
 	form.on("submit", function(e){
 		e.preventDefault();
-		$.post(	"api/chat/", form.serialize())
+		$.post(	"/api/chat", form.serialize())
 		.done(function( msg ) {
 			console.log( "Data Saved: " + msg );
 		});
