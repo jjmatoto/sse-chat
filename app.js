@@ -73,4 +73,4 @@ app.post('/api/chat', function(req, res){
 });
 
 
-app.listen(process.env.PORT | PORT);
+app.listen(process.env.PORT || PORT);
