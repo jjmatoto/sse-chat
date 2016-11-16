@@ -30,6 +30,8 @@ $(document).ready(function(){
 		$.post(	"/api/chat", form.serialize())
 		.done(function( msg ) {
 			console.log( "Data Saved: " + msg );
+			$("textarea[name=txt]")[0].value = "";
+			$("textarea[name=txt]")[0].focus();
 		});
 	});
 });
