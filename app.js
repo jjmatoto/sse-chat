@@ -65,7 +65,7 @@ app.get('/api/chat/', function(req, res){
 
 app.post('/api/chat', function(req, res){
 	console.log('entra POST...');
-	var msg = {'autor': req.body.aut,'text': req.body.txt,'date': req.body.date | new Date()};
+	var msg = {'autor': req.body.aut,'text': req.body.txt,'date': req.body.date || new Date()};
 	chat.push(msg);
 	emit(msg);
 	res.send('200');
