@@ -12,3 +12,7 @@
 	text-aling: right;
 	float: right;
 }
+textarea[name='txt']{
+	width: 100%;
+	height: 100px;
+}
