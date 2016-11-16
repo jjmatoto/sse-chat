@@ -5,6 +5,13 @@ $(document).ready(function(){
 	out = $("#out");
 	form = $("#chat_form");
 
+	
+	$("textarea[name=txt]").keypress(function(e) {
+		if(!e.shiftKey && e.which==13){
+		form.submit();
+		}
+	});
+	
 	function renderMsg(data){
 		var spanAut = "<strong>"+data.autor+":</strong>",
 			spanTxt = "<span>"+data.text+"</span>",
