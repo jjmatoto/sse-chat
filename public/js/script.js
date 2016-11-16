@@ -27,9 +27,7 @@ $(document).ready(function(){
 
 	form.on("submit", function(e){
 		e.preventDefault();
-		var now = new Date().getTime();
-		var data = form.serialize()+"date="+now;
-		$.post(	"/api/chat", data)
+		$.post(	"/api/chat", form.serialize)
 		.done(function( msg ) {
 			console.log( "Data Saved: " + msg );
 		});
