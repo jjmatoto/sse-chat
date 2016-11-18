@@ -18,7 +18,7 @@ $(document).ready(function(){
 			spanDate = "<span class=\"date\">"+new Date(data.date).toLocaleTimeString()+"</span>",
 			divMsg = "<div id=\"msg\">"+spanAut+spanTxt+spanDate+"</div>";
 			out.append(divMsg);
-			out.scrollTop(out.scrollHeight);
+			out.scrollTop(document.getElementById("out").scrollHeight);
 	}
 
 	src.onmessage = function(e) {
