@@ -1,17 +1,26 @@
-#out {
-    border: 1px dotted lime;
+#chat 
+{
+	display: none;
+}
+
+#out 
+{
+    /*border: 1px dotted lime;*/
     overflow: auto;
     max-height: 600px;
 }
-#out #msg {
+#out #msg 
+{
 	border: solid 1px black;
 	margin: .2em;
 }
-#out #msg>strong {
+#out #msg>strong 
+{
 	color: green;
 	margin-right: .1em
 }
-#out #msg>span.date {
+#out #msg>span.date 
+{
 	color: gray;
 	font-size: .5em;
 	text-aling: right;
@@ -38,4 +47,10 @@ textarea[name='txt']
 	border: none;
 	border-bottom: 1px solid #333;
 	color: #333;
+}
+
+#error 
+{
+	color: #333333;
+	background: tomato;
 }
