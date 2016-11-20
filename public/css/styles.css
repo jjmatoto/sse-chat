@@ -12,7 +12,25 @@
 	text-aling: right;
 	float: right;
 }
-textarea[name='txt']{
+
+#login input[name='username']
+{
+	width: initial;
+}
+
+textarea[name='txt']
+,textarea[name='txt']:focus
+{
 	width: 100%;
-	height: 100px;
+	height: 1em;
+	max-height: 10em;
+	outline: none;
+}
+
+.input-bottom-border
+{
+	resize: none;
+	border: none;
+	border-bottom: 1px solid #333;
+	color: #333;
 }
