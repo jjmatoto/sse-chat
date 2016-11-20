@@ -4,7 +4,26 @@ $(document).ready(function(){
 	src = new EventSource("api/chat/stream");
 	out = $("#out");
 	form = $("#chat_form");
+<<<<<<< HEAD
 	textarea = $("#input textarea[name='txt']");
+=======
+
+	
+	$("textarea[name=txt]").keypress(function(e) {
+		if(!e.shiftKey && e.which==13){
+		form.submit();
+		}
+	});
+	
+	function renderMsg(data){
+		var spanAut = "<strong>"+data.autor+":</strong>",
+			spanTxt = "<span>"+data.text+"</span>",
+			spanDate = "<span class=\"date\">"+new Date(data.date).toLocaleTimeString()+"</span>",
+			divMsg = "<div id=\"msg\">"+spanAut+spanTxt+spanDate+"</div>";
+			out.append(divMsg);
+			out.scrollTop(document.getElementById("out").scrollHeight);
+	}
+>>>>>>> origin/master
 
 	src.onmessage = function(e) {
 		var data = JSON.parse(e.data);
