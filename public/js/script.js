@@ -4,11 +4,8 @@ $(document).ready(function(){
 	src = new EventSource("api/chat/stream");
 	out = $("#out");
 	form = $("#chat_form");
-<<<<<<< HEAD
 	textarea = $("#input textarea[name='txt']");
-=======
 
-	
 	$("textarea[name=txt]").keypress(function(e) {
 		if(!e.shiftKey && e.which==13){
 		form.submit();
@@ -23,7 +20,6 @@ $(document).ready(function(){
 			out.append(divMsg);
 			out.scrollTop(document.getElementById("out").scrollHeight);
 	}
->>>>>>> origin/master
 
 	src.onmessage = function(e) {
 		var data = JSON.parse(e.data);
