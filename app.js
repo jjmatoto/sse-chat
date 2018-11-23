@@ -8,7 +8,6 @@ var PORT = 3000;
 
 // to support JSON-encoded bodies
 app.use( bodyParser.json() );
-// to support URL-encoded bodies
 app.use(bodyParser.urlencoded({
 	extended: true
 }));
